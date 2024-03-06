@@ -46,7 +46,7 @@ export const SignUp = () => {
             id="name"
             type="text"
             name="name"
-            required={true}
+            required={false}
             value={data.name}
             placeholder="Enter your name"
             onChange={handleChange}
@@ -59,7 +59,7 @@ export const SignUp = () => {
           <input
             type="email"
             name="email"
-            required={true}
+            required={false}
             id="signUpEmail"
             value={data.email}
             placeholder="example@email.com"
@@ -73,7 +73,7 @@ export const SignUp = () => {
           <input
             type="password"
             name="password"
-            required={true}
+            required={false}
             id="signUpPassword"
             value={data.password}
             placeholder="**************"
