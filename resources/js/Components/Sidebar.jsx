@@ -1,7 +1,8 @@
+import { useState } from "react";
 import { Link } from "@inertiajs/react";
 import { LuFileText, LuSettings, LuMountain, LuLayoutDashboard } from "react-icons/lu";
 import { RiStackLine } from "react-icons/ri";
-import { FaRegFolder, FaChevronDown } from "react-icons/fa";
+import { FaRegFolder, FaChevronUp, FaChevronDown } from "react-icons/fa";
 import { LuPlus } from "react-icons/lu";
 import { IoRocketOutline } from "react-icons/io5";
 import { MdOutlineLogout } from "react-icons/md";
@@ -16,6 +17,8 @@ const MenuItem = ({ Icon, label, link }) => (
 );
 
 export const Sidebar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <aside className="bg-zinc-900 w-full min-h-screen p-8 flex flex-col justify-between">
       <ul>
@@ -33,11 +36,11 @@ export const Sidebar = () => {
             <MenuItem Icon={RiStackLine} label="Projects" link="/projects" />
             <MenuItem Icon={LuFileText} label="Report" link="/report" />
             <li className="flex items-center justify-between cursor-pointer text-zinc-300">
-              <details open>
-                <summary className="flex gap-3 items-center hover:text-white" style={{ listStyle: 'none' }}>
+              <details open={isOpen} onClick={() => setIsOpen(!isOpen)}>
+                <summary className="flex gap-3 items-center list-none hover:text-white">
                   <IoRocketOutline size={24} />
                   <span>Work Space</span>
-                  <FaChevronDown size={16} />
+                  {isOpen ? <FaChevronUp size={16} /> : <FaChevronDown size={16} />}
                 </summary>
                 <summary className="py-2 px-5 mt-2 flex gap-2 items-center hover:text-white">
                   <FaRegFolder size={16} />
