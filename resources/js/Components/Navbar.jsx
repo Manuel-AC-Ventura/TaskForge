@@ -6,10 +6,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 export const Navbar = ()=>{
   return(
-    <header className="w-10/12 h-20 px-5 text-white float-right bg-zinc-900">
+    <header className="w-full h-20 px-5 text-white bg-zinc-900">
       <nav className="h-full flex py-2 items-center justify-between">
         <a href=""></a>
-        <form className="h-3/5 w-96 flex gap-2 px-3 items-center bg-zinc-800 rounded-md">
+        <form className="h-3/5 w-96 flex gap-2 px-2 items-center bg-zinc-800 rounded-md">
           <input 
             type="text"
             placeholder="Search anything..."

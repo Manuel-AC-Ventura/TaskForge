@@ -2,7 +2,7 @@ import { Head } from "@inertiajs/react"
 import { Navbar } from "@/Components/Navbar";
 import { Sidebar } from "@/Components/Sidebar";
 
-export default function Home ({ auth }){
+export default function Settings ({ auth }){
   return(
     <div className="w-full min-h-screen bg-zinc-950">
       <Head title="Home" />
@@ -12,7 +12,7 @@ export default function Home ({ auth }){
       <div className="w-10/12 min-h-screen float-right">
         <Navbar />
         <main className="w-full min-h-full p-5 text-white">
-          <h1 className="text-2xl font-semibold">Home</h1>
+          <h1 className="text-2xl font-semibold">Settings</h1>
         </main>
       </div>
     </div>

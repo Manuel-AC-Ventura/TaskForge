@@ -6,16 +6,18 @@ import { LuPlus } from "react-icons/lu";
 import { IoRocketOutline } from "react-icons/io5";
 import { MdOutlineLogout } from "react-icons/md";
 
-const MenuItem = ({ Icon, label }) => (
-  <li className="flex gap-3 items-center cursor-pointer text-zinc-300 hover:text-white">
-    <Icon size={24} />
-    <span>{label}</span>
+const MenuItem = ({ Icon, label, link }) => (
+  <li className="flex align-items-center gap-3 cursor-pointer text-zinc-300 hover:text-white">
+    <Link href={link} className="flex items-center gap-3">
+      <Icon size={24} />
+      <span>{label}</span>
+    </Link>
   </li>
 );
 
 export const Sidebar = () => {
   return (
-    <aside className="bg-zinc-900 w-2/12 min-h-screen p-8 flex flex-col justify-between">
+    <aside className="bg-zinc-900 w-full min-h-screen p-8 flex flex-col justify-between">
       <ul>
         <li>
           <h1>
@@ -27,9 +29,9 @@ export const Sidebar = () => {
         </li>
         <li className="mt-16">
           <ul className="flex flex-col gap-6">
-            <MenuItem Icon={LuLayoutDashboard} label="Dashboard" />
-            <MenuItem Icon={RiStackLine} label="Projects" />
-            <MenuItem Icon={LuFileText} label="Report" />
+            <MenuItem Icon={LuLayoutDashboard} label="Dashboard" link="/dashboard" />
+            <MenuItem Icon={RiStackLine} label="Projects" link="/projects" />
+            <MenuItem Icon={LuFileText} label="Report" link="/report" />
             <li className="flex items-center justify-between cursor-pointer text-zinc-300">
               <details open>
                 <summary className="flex gap-3 items-center hover:text-white" style={{ listStyle: 'none' }}>
@@ -51,7 +53,7 @@ export const Sidebar = () => {
                 </summary>
               </details>
             </li>
-            <MenuItem Icon={LuSettings} label="Settings" />
+            <MenuItem Icon={LuSettings} label="Settings" link="/settings" />
           </ul>
         </li>
       </ul>

@@ -26,4 +26,10 @@ Route::get("/home", [HomeController::class, "index"])
     ->middleware(["auth"])
     ->name("home");
 
+Route::get("/settings", function(){
+    return Inertia::render("Settings");
+})
+    ->middleware("auth")
+    ->name("settings");
+
 require __DIR__.'/auth.php';
