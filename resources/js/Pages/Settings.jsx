@@ -1,23 +1,60 @@
-import { useState } from "react";
-import { Head } from "@inertiajs/react"
+import { useState , Suspense, lazy } from "react";
+import { Head } from "@inertiajs/react";
 import { Navbar } from "@/Components/Navbar";
 import { Sidebar } from "@/Components/Sidebar";
-import { FaChevronUp, FaChevronDown } from "react-icons/fa";
+import { Account } from "@/Components/Settings/Account";
 
-export default function Settings ({ auth }){
-  const [isOpen, setIsOpen] = useState(false);
+
+
+export default function Settings({ auth }){
+  const menu = ["Account", "Security", "Privacy", "Email", "Billing"];
+  const [active, setActive] = useState(menu[0])
+
+  const TabRender = () =>{
+    switch(active){
+      case "Account":
+        return <Account auth={auth} />
+
+      default:
+        return null;
+    }
+  }
 
   return(
-    <div className="w-full min-h-screen bg-zinc-950">
+    <div className="bg-zinc-950 flex">
       <Head title="Settings" />
-      <div className="w-2/12 float-left">
+      <div className="w-2/12">
         <Sidebar />
       </div>
-      <div className="w-10/12 min-h-screen float-right">
+      <div className="w-10/12">
         <Navbar />
-        <main className="w-full min-h-full p-5 text-white">
-          <h1 className="text-2xl font-semibold">Settings</h1>
 
+        <nav className="h-8 mt-5 pl-8">
+          <ul className="flex gap-8">
+          {menu.map((item, index) => (
+            <li 
+              key={index}
+              onClick={() => setActive(item)}
+              className={`text-zinc-500 pb-2 cursor-pointer transition hover:text-blue-600 ${
+                active === item ? 'text-blue-600 border-b-2 border-b-blue-600 font-semibold' : ''
+              }`}
+            >
+              {item}
+            </li>
+            ))}
+          </ul>
+        </nav>
+
+        <main className="flex gap-8 mx-8 mt-5">
+          <div className="w-9/12 bg-zinc-900 rounded-md p-5">
+            <Suspense fallback={<div>Loading...</div>}>
+              {TabRender()}
+            </Suspense>
+          </div>
+          
+          <div className="w-3/12 h-64 bg-zinc-900 rounded-md p-5">
+
+          </div>
         </main>
       </div>
     </div>
